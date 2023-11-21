@@ -1,17 +1,23 @@
+
 #include<stdio.h>
-int main () {
+int main ()
 
-double number;
+{
 
-printf("Enter a number: ");
-scanf("%lf", &number);
+double num;
 
-if(number/2)
-   printf("The number is odd \n");
+printf("please enter a number: ");
+scanf("%lf", &num);
 
-else(number !/2)
- printf("The number is even \n");
-
+if(num <= 0)
+    {
+        printf("the number is negative");
+    }
+else if(num>=0)
+{
+    printf("the number is positive");
+}
+else {printf("the number is 0");}
 
 return 0;
 }
