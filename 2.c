@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+
+    double principle, time, rate, SI;
+
+    printf("enter the principle amount= ");
+    scanf("%lf", &principle);
+     printf("enter the time= ");
+    scanf("%lf", &time);
+     printf("enter the rate= ");
+    scanf("%lf", &rate);
+
+    SI= ( principle * time * rate) / 100 ;
+
+    printf("simple interest is= %.lf", SI);
+
+
+
+
+
+    return 0;
+}
