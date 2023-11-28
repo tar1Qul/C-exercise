@@ -1,0 +1,31 @@
+#include<stdio.h>
+int main()
+{   
+ int n,limit,sum_even=o,sum_odd=o;
+ 
+ printf("\n Enter YOUR LIMIT: ");
+ scanf("%d",&limit);
+
+ //Code For Even Number List
+
+ printf("\n Even Number List :\n ");
+ n=2;
+ while(n<=limit)
+ {
+  printf(" %d",n);
+  n=n+2;
+ }
+
+//Code For Odd Number List
+
+ printf("\n\n Odd Number List :\n ");
+ n=1;
+ while(n<=limit)
+ {
+  printf(" %d",n);
+  n=n+2;
+ }
+ 
+ return 0;
+
+}
