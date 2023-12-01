@@ -1,0 +1,19 @@
+#include<stdio.h>
+int main()
+{
+
+ double x,y,x_plus_y,x_min_y;
+
+ printf("enter the value of x+y : ");
+ scanf("%lf", &x_plus_y);
+ printf("enter the value of x-y : ");
+ scanf("%lf", &x_min_y);
+
+ x = (x_plus_y + x_min_y)/2 ;
+ y = (x_plus_y - x_min_y)/2 ;
+
+ printf("Value of x: %.lf\nValue of y: %lf",x,y);
+
+ return 0;
+
+}
