@@ -1,0 +1,44 @@
+#include <stdio.h>
+int main()
+{
+    double percentage;
+
+    do
+        {
+        printf("Enter the percentage (enter negative percentage to exit): ");
+        scanf("%lf", &percentage);
+
+        if (percentage < 0)
+        {
+            printf("Negative percentage entered. Exiting the program...\n");
+            break;
+        }
+        else if (percentage >= 90 && percentage <= 100)
+        {
+            printf("Grade: A\n");
+        }
+        else if (percentage >= 80 && percentage < 90)
+        {
+            printf("Grade: B\n");
+        }
+        else if (percentage >= 70 && percentage < 80)
+        {
+            printf("Grade: C\n");
+        }
+        else if (percentage >= 60 && percentage < 70)
+        {
+            printf("Grade: D\n");
+        }
+        else if (percentage >= 0 && percentage < 60)
+        {
+            printf("Grade: F\n");
+        }
+        else
+        {
+            printf("Invalid percentage entered. Please enter a valid percentage (0-100).\n");
+        }
+    }
+    while (percentage >= 0);
+
+    return 0;
+}
