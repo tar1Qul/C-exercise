@@ -8,8 +8,9 @@ int main()
 
     printf("\nFibonacci Series up to %d terms: ", num_terms);
 
-    for (i = 0; i < num_terms; ++i) {
-        printf("%d, ", first);
+    for (i = 0; i < num_terms; ++i) 
+{
+        printf("%d", first);
         next = first + second;
         first = second;
         second = next;
