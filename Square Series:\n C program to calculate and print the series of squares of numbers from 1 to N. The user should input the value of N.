@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main()
+{
+    int limit;
+
+    printf("Enter the value of N(limit): ",limit);
+    scanf("%d", &limit);
+
+    printf("Series of squares of numbers from 1 to %d:\n", limit);
+
+    for (int i = 1; i <= limit; ++i) {
+        printf("%d^2 = %d\n", i, i * i);
+    }
+
+    return 0;
+}
