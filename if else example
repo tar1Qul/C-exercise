@@ -1,0 +1,19 @@
+#include<stdio.h>
+int main () {
+    
+    int num;
+    
+ printf("please enter a numer: "); 
+ scanf("%d", &num);
+ 
+ if (num % 5 == 0)
+ {
+     printf("Its your lucky number");
+ }
+ else
+ {
+     printf("just a normal number");
+ }
+    
+    return 0;
+}
