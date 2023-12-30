@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main ()
+{
+int f=1,s=2,t,i;
+printf("The last day of the year is ");
+for(i=1;i<=2;i++)
+{
+t=f+s;
+printf("%d%d.%d", f,s,t);
+}
+return 0;
+}
