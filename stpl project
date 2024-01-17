@@ -1,0 +1,60 @@
+#include<stdio.h>
+int main(){
+    char input;
+    while (1){
+
+    printf("Enter your input(Enter q to exit):");
+    scanf(" %c",&input);
+
+    if(input=='q'){
+        break;
+}
+else if(input=='+'){
+        printf("Enter 1st digit:");
+        int x,y,z;
+        scanf("%d",&x);
+         printf("Enter 2nd digit:");
+         scanf("%d",&y);
+
+        printf("your value is:%d\n",z=x+y);
+
+    }
+    else if(input=='-'){
+        printf("Enter 1st digit:");
+        int x,y,z;
+        scanf("%d",&x);
+         printf("Enter 2nd digit:");
+         scanf("%d",&y);
+
+        printf("your value is:%d\n",z=x-y);
+
+    }
+    else if(input=='*'){
+        printf("Enter 1st digit:");
+        int x,y,z;
+        scanf("%d",&x);
+         printf("Enter 2nd digit:");
+         scanf("%d",&y);
+
+        printf("your value is:%d\n",z=x*y);
+
+    }
+    else if(input=='/'){
+        printf("Enter 1st digit:");
+        int x,y,z;
+        scanf("%d",&x);
+         printf("Enter 2nd digit:");
+         scanf("%d",&y);
+
+        printf("your value is:%d\n",z=x/y);
+
+    }
+
+
+    }
+    printf("\nProgram Closed");
+
+
+
+    return 0;
+}
