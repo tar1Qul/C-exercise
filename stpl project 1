@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+    char ch;
+    int num1, num2;
+
+    while (1) {
+        printf("Give input: type q to exit: ");
+        scanf(" %c", &ch);
+
+        if (ch == 'q') {
+            printf("Program exit\n");
+            break;
+        } else if (ch == '+') {
+            printf("Give the first number: ");
+            scanf("%d", &num1);
+            printf("Enter the second number: ");
+            scanf("%d", &num2);
+            printf("You input %d and %d\n", num1, num2);
+            int add = num1 + num2;
+            printf("Addition result is: %d\n", add);
+        } else if (ch == '-') {
+            printf("Give the first number: ");
+            scanf("%d", &num1);
+            printf("Enter the second number: ");
+            scanf("%d", &num2);
+            printf("You input %d and %d\n", num1, num2);
+            int subt = num1 - num2;
+            printf("Subtraction result is: %d\n", subt);
+        } else if (ch == '*') {
+            printf("Give the first number: ");
+            scanf("%d", &num1);
+            printf("Enter the second number: ");
+            scanf("%d", &num2);
+            printf("You input %d and %d\n", num1, num2);
+            int mult = num1 * num2;
+            printf("Multiplication result is: %d\n", mult);
+        } else if (ch == '/') {
+            printf("Give the first number: ");
+            scanf("%d", &num1);
+            printf("Enter the second number: ");
+            scanf("%d", &num2);
+            printf("You input %d and %d\n", num1, num2);
+            if (num2 != 0) {
+                double div = (double)num1 / num2;
+                printf("Division result is: %lf\n", div);
+            } else {
+                printf("Cannot divide by zero\n");
+            }
+        } else {
+            printf("Invalid input. Please enter a valid operation or 'q' to exit.\n");
+        }
+    }
+
+    return 0;
+}
