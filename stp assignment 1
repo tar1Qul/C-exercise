@@ -1,0 +1,29 @@
+#include<stdio.h>
+
+int main() {
+    double bangla, english, math, chemistry, biology;
+    double sum, average;
+
+    printf("Enter mark of Bangla: ");
+    scanf("%lf", &bangla);
+
+    printf("Enter mark of English: ");
+    scanf("%lf", &english);
+
+    printf("Enter mark of Math: ");
+    scanf("%lf", &math);
+
+    printf("Enter mark of Chemistry: ");
+    scanf("%lf", &chemistry);
+
+    printf("Enter mark of Biology: ");
+    scanf("%lf", &biology);
+
+    sum = bangla + english + math + chemistry + biology;
+    average = sum / 5;
+
+    printf("You got a total of %.2lf marks out of 500 marks\n", sum);
+    printf("You got %.2lf%% marks\n", average);
+
+    return 0;
+}
