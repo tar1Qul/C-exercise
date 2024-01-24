@@ -1,0 +1,77 @@
+#include<stdio.h>
+int main() {
+
+int sum (int x, int y){
+int sumR=x=y;
+return sumR;
+}
+
+int sum (int x, int y){
+int subR=x=y;
+return subR;
+}
+
+int sum (int x, int y){
+int mulR=x=y;
+return multR;
+}
+
+int sum (int x, int y){
+int divR=x=y;
+return divR;
+}
+
+int main(){
+
+int n1;
+int n2;
+char input;
+while(1){
+    printf("Enter input(+-*/ or q to exit");
+    scanf("%c",&input);
+    if(input=='q'){
+        break;
+    }
+    else if(input=='+'){
+        printf("Enter first digit: ");
+        scanf("%d",&n1);
+        printf("Enter second digit: ");
+        scanf("%d",&n2);
+        int r1=sum(r1,r2);
+        printf("Result=%d",r1);
+    }
+
+     else if(input=='-'){
+        printf("Enter first digit: ");
+        scanf("%d",&n1);
+        printf("Enter second digit: ");
+        scanf("%d",&n2);
+        int r2=sub(r1,r2);
+        printf("Result=%d",r2);
+    }
+
+     else if(input=='*'){
+        printf("Enter first digit: ");
+        scanf("%d",&n1);
+        printf("Enter second digit: ");
+        scanf("%d",&n2);
+        int r3=mult(r1,r2);
+        printf("Result=%d",r3);
+    }
+
+     else if(input=='/'){
+        printf("Enter first digit: ");
+        scanf("%d",&n1);
+        printf("Enter second digit: ");
+        scanf("%d",&n2);
+        int r4=div(r1,r2);
+        printf("Result=%d",r4);
+    }
+
+    else {printf("oparetor dosn't exit.")}
+}
+
+
+
+return 0;
+}
