@@ -1,0 +1,17 @@
+
+#include <stdio.h>
+
+double compute_function_result(double x) {
+    return 2 * pow(x, 2) + 3 * x + 1;
+}
+
+int main() {
+    double x, result;
+
+    printf("Enter the value of x for the f(x)=2x^2+3x+1: ");
+    scanf("%lf", &x);
+
+    printf("f(x) = %.2lf\n", result = compute_function_result(x));
+
+    return 0;
+}
