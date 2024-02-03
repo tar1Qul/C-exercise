@@ -1,0 +1,46 @@
+
+#include <stdio.h>
+int main() {
+    char ch;
+    int num1, num2, result;
+
+    while (1) {
+        printf("Give input: Enter +, -, *, / or type q to exit: ");
+        scanf(" %c", &ch);
+
+        if (ch == 'q') {
+            printf("Program exit\n");
+            break;
+        }
+
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+            printf("Enter the first number: ");
+            scanf("%d", &num1);
+            printf("Enter the second number: ");
+            scanf("%d", &num2);
+
+            switch (ch) {
+                case '+':
+                    int sum = (num1+ num2);
+                    printf("Addition result is: %d\n", sum);
+                    break;
+                case '-':
+                    int sub = (num1-num2);
+                    printf("Subtraction result is: %d\n", sub);
+                    break;
+                case '*':
+                    int mult = (num1 * num2);
+                    printf("Multiplication result is: %d\n", mult);
+                    break;
+                case '/':
+                    int div = (num1 / num2);
+                    printf("Division result is: %d\n", div);
+                    break;
+            }
+        } else {
+            printf("Invalid input. Please enter a valid operation or 'q' to exit.\n");
+        }
+    }
+
+    return 0;
+}
