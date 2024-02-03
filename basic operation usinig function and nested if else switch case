@@ -1,0 +1,68 @@
+
+#include <stdio.h>
+
+int sum(int x, int y) {
+    return x + y;
+}
+
+int sub(int x, int y) {
+    return x - y;
+}
+
+int mult(int x, int y) {
+    return x * y;
+}
+
+int divide(int x, int y) {
+    if (y != 0) {
+        return x / y;
+    } else {
+        printf("Error: Cannot divide by zero.\n");
+        return 0;
+    }
+}
+
+int main() {
+    char ch;
+    int num1, num2, result;
+
+    while (1) {
+        printf("Give input: Enter +, -, *, / or type q to exit: ");
+        scanf(" %c", &ch);
+
+        if (ch == 'q') {
+            printf("Program exit\n");
+            break;
+        }
+
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+            printf("Enter the first number: ");
+            scanf("%d", &num1);
+            printf("Enter the second number: ");
+            scanf("%d", &num2);
+
+            switch (ch) {
+                case '+':
+                    result = sum(num1, num2);
+                    printf("Addition result is: %d\n", result);
+                    break;
+                case '-':
+                    result = sub(num1, num2);
+                    printf("Subtraction result is: %d\n", result);
+                    break;
+                case '*':
+                    result = mult(num1, num2);
+                    printf("Multiplication result is: %d\n", result);
+                    break;
+                case '/':
+                    result = divide(num1, num2);
+                    printf("Division result is: %d\n", result);
+                    break;
+            }
+        } else {
+            printf("Invalid input. Please enter a valid operation or 'q' to exit.\n");
+        }
+    }
+
+    return 0;
+}
