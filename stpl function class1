@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+int add(int x, int y) {
+    return x + y;
+}
+
+int subtract(int x, int y) {
+    return x - y;
+}
+
+int multiply(int x, int y) {
+    return x * y;
+}
+
+int divide(int x, int y) {
+    if (y != 0)
+        return x / y;
+    else {
+        printf("Error: Division by zero\n");
+        return 0;
+    }
+}
+
+int main() {
+    int n1, n2;
+    char input;
+    while (1) {
+        printf("Enter input (+-*/ or q to exit): ");
+        scanf(" %c", &input); // Added a space before %c to consume newline
+        if (input == 'q') {
+            break;
+        } else if (input == '+') {
+            printf("Enter first digit: ");
+            scanf("%d", &n1);
+            printf("Enter second digit: ");
+            scanf("%d", &n2);
+            int result = add(n1, n2);
+            printf("Result = %d\n", result);
+        } else if (input == '-') {
+            printf("Enter first digit: ");
+            scanf("%d", &n1);
+            printf("Enter second digit: ");
+            scanf("%d", &n2);
+            int result = subtract(n1, n2);
+            printf("Result = %d\n", result);
+        } else if (input == '*') {
+            printf("Enter first digit: ");
+            scanf("%d", &n1);
+            printf("Enter second digit: ");
+            scanf("%d", &n2);
+            int result = multiply(n1, n2);
+            printf("Result = %d\n", result);
+        } else if (input == '/') {
+            printf("Enter first digit: ");
+            scanf("%d", &n1);
+            printf("Enter second digit: ");
+            scanf("%d", &n2);
+            int result = divide(n1, n2);
+            printf("Result = %d\n", result);
+        } else {
+            printf("Operator doesn't exist.\n");
+        }
+    }
+    return 0;
+}
