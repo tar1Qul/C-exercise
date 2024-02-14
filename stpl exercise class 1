@@ -1,0 +1,128 @@
+/* Q1: */ 
+
+#include<stdio.h>
+int main(){
+    
+  int n, sum=0;
+  printf("Please give a number: ");
+  scanf("%d",&n);
+  
+  for(int i=1;i<=n; i++){
+      sum += i;
+  }
+    
+  printf("The sum is: %d", sum);
+  
+    
+    return 0;
+}
+
+/* Q2: */
+
+#include<stdio.h>
+int main(){
+    
+  int n, sum=0;
+  printf("Please give a number: ");
+  scanf("%d",&n);
+  
+  for(int i=1;i<=n; i++){
+      sum += i*i;
+  }
+    
+  printf("The sum is: %d", sum);
+  
+    
+    return 0;
+}
+
+/* Q4: */
+
+
+/* Q3: */
+
+#include<stdio.h>
+int main(){
+    
+  double n,i,sum=0, average;
+  printf("Please give a number: ");
+  scanf("%lf",&n);
+  
+  for(double i=1;i<=n; i++){
+      sum += i;
+  }
+   average = sum/n ; 
+    printf("The sum is: %lf \n", sum);
+  printf("The average is: %lf", average);
+  
+    
+    return 0;
+}
+
+/* Q4: */
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float sum = 0, average;
+    
+    printf("How many numbers will you give? ");
+    scanf("%d", &n);
+    
+    float numbers[n];
+    
+    for(i = 0; i < n; i++) {
+        printf("Enter number: ");
+        scanf("%f", &numbers[i]);
+        sum += numbers[i];
+    }
+    average = sum / n;
+    
+    printf("\nThe sum is: %.2f\n", sum);
+    printf("The average is: %.2f\n", average);
+    
+    return 0;
+}
+
+/* Q5: */
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float sum = 0, average, max = 0, min = 100;
+    
+    printf("How many students will you give?\n ");
+    scanf("%d", &n);
+    
+    char names[n][50];
+    int marks[n];
+    
+    for(i = 0; i < n; i++) {
+        printf("\nEnter name: ");
+        scanf("%s", names[i]);
+        
+        printf("Provide mark: ");
+        scanf("%d", &marks[i]);
+        
+        sum += marks[i];
+        
+        if (marks[i] > max)
+            max = marks[i];
+        if (marks[i] < min)
+            min = marks[i];
+    }
+    
+    average = sum / n;
+    
+    printf("\nHere are the students:\n");
+    for(i = 0; i < n; i++) {
+        printf("%s %d\n", names[i], marks[i]);
+    }
+    
+    printf("\nAverage mark is: %.6f\n", average);
+    printf("Minimum mark is: %d\n", (int)min);
+    printf("Maximum mark is: %d\n", (int)max);
+    
+    return 0;
+}
