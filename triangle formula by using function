@@ -1,0 +1,23 @@
+
+#include <stdio.h>
+
+int triangle(double base, double height){
+    return 0.5 * base * height;
+}
+
+int main() {
+   
+   double base, height;
+   
+   printf("Enter base: ");
+   scanf("%lf", &base);
+   
+   printf("\nEnter height: ");
+   scanf("%lf", &height );
+    
+   double area = triangle(base, height);
+   
+    printf("\n\nArea is: %lf", area);
+
+    return 0;
+}
