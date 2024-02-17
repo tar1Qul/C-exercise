@@ -1,0 +1,22 @@
+#include <stdio.h>
+double area(double a, double b){
+return  a * b;
+
+}
+
+int main(){
+
+double  length, width;
+
+printf("Enter the value of length: ");
+scanf("%lf", &length);
+
+printf("Enter the value of width: ");
+scanf("%lf", &width);
+
+double result_area = area(length, width);
+
+printf("Area of the rectangle is:%.2lf\n",result_area);
+
+    return 0;
+}
