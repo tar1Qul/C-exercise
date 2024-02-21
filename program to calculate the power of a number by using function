@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+double power(double base, double exponent){
+    double result=1;
+    for(int i=1;i<=exponent; i++){
+      result *= base;   
+    }
+  return result; 
+}
+/*tariqu.soykot.001*/
+int main() {
+    
+    double base,exponent,result;
+    
+    printf("Please enter the base: ");
+    scanf("%lf", &base);
+    printf("Please enter the exponent: ");
+    scanf("%lf", &exponent);
+
+result =  power(base, exponent);
+
+    printf("\nResult: %.2lf", result);
+    return 0;
+}
+
