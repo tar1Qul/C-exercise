@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int isPerfect(int num) {
+    int sum = 0;
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0) {
+            sum += i;
+        }
+    }
+    return sum == num;
+}
+
+void printPerfectNumbers(int lowerLimit, int upperLimit) {
+    printf("The perfect numbers between %d to %d are:\n", lowerLimit, upperLimit);
+    for (int i = lowerLimit; i <= upperLimit; i++) {
+        if (isPerfect(i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int lowerLimit, upperLimit;
+    
+    printf("Input lowest search limit of perfect numbers: ");
+    scanf("%d", &lowerLimit);
+    printf("Input highest search limit of perfect numbers: ");
+    scanf("%d", &upperLimit);
+
+    printPerfectNumbers(lowerLimit, upperLimit);
+
+    return 0;
+}
