@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    int sum = 0;
+    double average;
+
+    printf("Enter limit for n: ");
+    scanf("%d", &n);
+    
+    printf("\nInput the %d numbers:\n", n);
+    for (int i = 1; i <= n; i++) {
+        int num;
+        printf("Number %d: ", i);
+        scanf("%d", &num);
+        sum += num;
+    }
+
+    average = (double)sum / n;
+
+    printf("The sum of given %d numbers is: %d\n", n, sum);
+    printf("The Average is: %.3lf\n", average);
+
+    return 0;
+}
