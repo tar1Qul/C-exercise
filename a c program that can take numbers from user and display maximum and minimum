@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main() {
+   
+  int number[100], n, i;
+   printf("please enter your limit: ");
+   scanf("%d", &n);
+   
+   printf("please enter your elements: ");
+   for(i=0; i<n; i++){
+    scanf("%d", &number[i]);
+   }
+   
+   int max = number[0], min = number[0];
+   for(i=1; i< n; i++)
+   {
+         if(max < number[i])
+         max = number[i];
+         
+         if(min > number[i])
+         min = number[i];
+   }
+  
+   printf("\nMaximum number: %d\n", max);
+   printf("Minimum number: %d", min);
+   
+
+    return 0;
+}
