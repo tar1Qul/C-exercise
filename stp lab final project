@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_BOOKS 100
+
+struct Book {
+    char title[100];
+    char ISBN[20];
+    char author[100];
+    char date_of_entry[20];
+    float price;
+    int copies;
+};
+
+struct Book books[MAX_BOOKS];
+int num_books = 0;
+
+void addBook() {
+    if (num_books < MAX_BOOKS) {
+        struct Book newBook;
+        printf("Enter book title: ");
+        scanf("%s", newBook.title);
+        printf("Enter ISBN: ");
+        scanf("%s", newBook.ISBN);
+        printf("Enter author: ");
+        scanf("%s", newBook.author);
+        printf("Enter date of entry: ");
+        scanf("%s", newBook.date_of_entry);
+        printf("Enter acquisition price per unit: ");
+        scanf("%f", &newBook.price);
+        printf("Enter number of copies: ");
+        scanf("%d", &newBook.copies);
+        books[num_books++] = newBook;
+        printf("Book added successfully!\n");
+    } else {
+        printf("Maximum number of books reached!\n");
+    }
+}
+
+float calculateTotalValue() {
+    float totalValue = 0;
+    for (int i = 0; i < num_books; i++) {
+        totalValue += books[i].price * books[i].copies;
+    }
+    return totalValue;
+}
+
+void findPriciestBook() {
+    float maxPrice = 0;
+    int index = -1;
+    for (int i = 0; i < num_books; i++) {
+        if (books[i].price > maxPrice) {
+            maxPrice = books[i].price;
+            index = i;
+        }
+    }
+    if (index != -1) {
+        printf("Priciest book: %s\n", books[index].title);
+    } else {
+        printf("No books in stock!\n");
+    }
+}
+
+int main() {
+    int choice;
+    do {
+        printf("\nLibrary Management System\n");
+        printf("1. Add Book\n");
+        printf("2. Calculate Total Value\n");
+        printf("3. Find Priciest Book\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                addBook();
+                break;
+            case 2:
+                printf("Total value of stock: $%.2f\n", calculateTotalValue());
+                break;
+            case 3:
+                findPriciestBook();
+                break;
+            case 4:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    } while (choice != 4);
+    return 0;
+}
