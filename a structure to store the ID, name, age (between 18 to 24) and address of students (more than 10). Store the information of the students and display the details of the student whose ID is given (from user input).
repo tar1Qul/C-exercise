@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    int ID;
+    char name[50];
+    int age;
+    char address[100];
+};
+
+int main() {
+    struct Student students[10];
+    int i, j, searchID;
+
+    printf("How many students information you want to input?\n");
+    printf("=\t");
+    scanf("%d", &j);
+
+    for (i = 0; i < j; i++) {
+        printf("Enter ID for student %d: ", i + 1);
+        scanf("%d", &students[i].ID);
+
+        printf("Enter name for student %d: ", i + 1);
+        scanf("%s", students[i].name);
+
+        printf("Enter age for student %d (between 18 and 24): ", i + 1);
+        scanf("%d", &students[i].age);
+        while (students[i].age < 18 || students[i].age > 24) {
+            printf("Age must be between 18 and 24. Enter age again: ");
+            scanf("%d", &students[i].age);
+        }
+
+        printf("Enter address for student %d: ", i + 1);
+        scanf("%s", students[i].address);
+    }
+
+    printf("\nEnter the ID of the student to search: ");
+    scanf("%d", &searchID);
+
+    for (i = 0; i < j; i++) {
+        if (students[i].ID == searchID) {
+            printf("\nDetails of student with ID %d:\n", searchID);
+            printf("Name: %s\n", students[i].name);
+            printf("Age: %d\n", students[i].age);
+            printf("Address: %s\n", students[i].address);
+            break;
+        }
+    }
+
+    if (i == j) {
+        printf("\nStudent with ID %d not found.\n", searchID);
+    }
+
+    return 0;
+}
