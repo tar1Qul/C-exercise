@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    char ch;
+    int i,vowel,digit,word, others, consonent;
+
+    printf("Enter a srting: ");
+    gets(str);
+
+    i = vowel = consonent = digit = word = others = 0   ;
+
+
+            printf("\n\n");
+
+
+    while((ch = str[i]) != '\0')
+    {
+
+    if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+    vowel ++;
+
+    else if ((ch>= 'a' && ch<='z') || (ch>= 'A' && ch<='A') )
+    consonent++;
+
+    else if(ch>= '0' && ch<='9')
+    digit++;
+
+    else if(ch == ' ')
+    word++;
+
+    else
+    others++;
+
+    i++;
+    }
+  word++;
+
+
+         printf("Numer of vowel: %d\n",vowel);
+         printf("Numer of consonent: %d\n",consonent);
+         printf("Numer of digit: %d\n",digit);
+         printf("Numer of word:%d\n", word);
+         printf("Numer of others:%d\n", others);
+
+
+
+
+        printf("\n\n\n ");
+     return 0;
+}
+
