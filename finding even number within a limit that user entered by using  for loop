@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main()
+{
+
+int i=1, limit;
+ 
+ printf("Please enter limit: ");
+ scanf("%d",&limit);
+ 
+   printf("\nEven numbers form 1 to %d are:\n",limit);
+for(;i<=limit;i++)
+{ 
+     if(i%2!=0){
+         
+  printf("%d\t",i);
+} 
+  }   return 0;
+}
