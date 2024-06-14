@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int binary_search(char arr[], int size, char target) {
+    int low = 0, high = size - 1;
+    
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] > target) { 
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    
+    return -1;
+}
+
+int main() {
+    int size, i;
+    
+    printf("Enter the size of the array: \n");
+    scanf("%d", &size);
+    
+    char arr[size];
+    
+    printf("\nEnter the elements of the array in descending order:\n");
+    for (i = 0; i < size; i++) {
+        scanf(" %c", &arr[i]); 
+    }
+    
+    char target;
+    printf("\nEnter the element to search: ");
+    scanf(" %c", &target);
+    
+    int result = binary_search(arr, size, target);
+    
+    if (result != -1) {
+        printf("\nElement found at index: %d\n", result+1);
+    } else {
+        printf("\nElement not found in the array.\n");
+    }
+    
+    return 0;
+}
