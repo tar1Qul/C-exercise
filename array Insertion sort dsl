@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Enter array limit: ");
+    scanf("%d", &n);
+ printf("\n");
+
+    int arry[n];
+
+    printf("Enter array elements: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arry[i]);
+    }
+ printf("\n");
+
+    printf("Array elements: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arry[i]);
+    }
+    printf("\n");
+ printf("\n");
+ printf("********************");
+
+ for( int i =1; i<n; i++){
+
+          int temp= arry[i];
+          int j= i-1;
+
+          while (j >=0 &&  arry[j]> temp){
+                    arry[j+1] = arry[j];
+                    j--;
+
+          }
+                              arry[j+1] =temp;
+
+ }
+
+  printf("\nSolted arry: ");
+
+ for(int x=0;  x<= n; x++){
+     printf("%d\t",arry[x]);
+
+ }
+
+
+    return 0;
+}
