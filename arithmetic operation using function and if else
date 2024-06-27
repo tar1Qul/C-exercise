@@ -26,7 +26,7 @@ int main() {
     char input;
     while (1) {
         printf("Enter input (+-*/ or q to exit): ");
-        scanf(" %c", &input); // Added a space before %c to consume newline
+        scanf(" %c", &input); 
         if (input == 'q') {
             break;
         } else if (input == '+') {
