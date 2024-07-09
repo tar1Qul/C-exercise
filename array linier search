@@ -1,37 +1,41 @@
 #include <stdio.h>
 
 int main() {
-    int s,j,n,i,search ;
+    int n, search;
 
-    printf("Enter the size  of the array?\n");
-    scanf("%d", &s);
+    printf("Enter array limit: ");
+    scanf("%d", &n);
 
-    printf("\nEnter the elements of the array.\n");
+    int arry[n];
 
-    int arry[s];
-    for (i = 0; i < s; i++) {
+    printf("Enter array elements: ");
+    for (int i = 0; i < n; i++) {
         scanf("%d", &arry[i]);
     }
 
-    printf("\nThe elements of the array are:\n");
-    for (int j = 0; j < s; j++) {
-        printf("%d ", arry[j]);
+    printf("Array elements: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arry[i]);
     }
-    printf("\n");
+     printf("\n*****************************");
+    printf("\n\n");
 
-        printf("\nEnter number to search: \n");
-                scanf("%d", &search);
+    printf("Enter a number to search in the array: ");
+    scanf("%d", &search);
 
+    int found = 0; 
 
- for (int j = 0; j < s; j++) {
-    if(search == arry[j]){
-         printf("%d is found in index %d",search,j);
-
+    for (int c = 0; c < n; c++) {
+        if (search == arry[c]) {
+            printf("Number %d is available and located at location %d\n", search, c + 1);
+            found = 1; 
+            break;
+        }
     }
-    }
 
-if (search != arry[j])
-   { printf("%d is not found in the array.\n", search); }
+    if (!found) {
+        printf("Number %d is not available\n", search);
+    }
 
     return 0;
 }
