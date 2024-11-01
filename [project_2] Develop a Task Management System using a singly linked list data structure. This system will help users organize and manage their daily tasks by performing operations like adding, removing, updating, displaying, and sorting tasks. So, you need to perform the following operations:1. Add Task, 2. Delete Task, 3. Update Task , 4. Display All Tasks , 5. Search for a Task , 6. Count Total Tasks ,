@@ -1,0 +1,226 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Task {
+    int Task_ID;
+    char Description[100];
+    char Due_Date[20];
+    char Status[20];
+    struct Task* next;
+};
+
+struct Task* head = NULL;
+
+struct Task* createTask(int id, char* description, char* due_date, char* status) {
+    struct Task* newTask = (struct Task*)malloc(sizeof(struct Task));
+    newTask->Task_ID = id;
+    strcpy(newTask->Description, description);
+    strcpy(newTask->Due_Date, due_date);
+    strcpy(newTask->Status, status);
+    newTask->next = NULL;
+    return newTask;
+}
+
+void addTask(int id, char* description, char* due_date, char* status) {
+    struct Task* newTask = createTask(id, description, due_date, status);
+    if (head == NULL) {
+        head = newTask;
+    } else {
+        struct Task* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newTask;
+    }
+    printf("Task added\n");
+}
+
+void deleteTask(int id) {
+    struct Task* current = head;
+    struct Task* temp = NULL;
+
+    if (current != NULL && current->Task_ID == id) {
+        head = current->next;
+        free(current);
+        printf("Task deleted\n");
+        return;
+    }
+
+    while (current != NULL && current->next != NULL) {
+        if (current->next->Task_ID == id) {
+            temp = current->next;
+            current->next = temp->next;
+            free(temp);
+            printf("Task deleted\n");
+            return;
+        }
+        current = current->next;
+    }
+    printf("Task ID %d not found\n", id);
+}
+
+void updateTask(int id, char* new_description, char* newDue_date, char* new_status) {
+    struct Task* temp = head;
+    while (temp != NULL) {
+        if (temp->Task_ID == id) {
+            strcpy(temp->Description, new_description);
+            strcpy(temp->Due_Date, newDue_date);
+            strcpy(temp->Status, new_status);
+            printf("Task updated\n");
+            return;
+        }
+        temp = temp->next;
+    }
+    printf("Task ID %d not found!\n", id);
+}
+
+void showTasks() {
+    struct Task* temp = head;
+    if (temp == NULL) {
+        printf("There are no tasks\n");
+        return;
+    }
+
+    printf("Displaying all tasks:\n");
+    while (temp != NULL) {
+        printf("Task ID: %d\n", temp->Task_ID);
+        printf("Description: %s\n", temp->Description);
+        printf("Due Date: %s\n", temp->Due_Date);
+        printf("Status: %s\n\n", temp->Status);
+        temp = temp->next;
+    }
+}
+
+void searchTask(int id) {
+    struct Task* temp = head;
+    while (temp != NULL) {
+        if (temp->Task_ID == id) {
+            printf("Task found!\n");
+            printf("Task ID: %d\n", temp->Task_ID);
+            printf("Description: %s\n", temp->Description);
+            printf("Due Date: %s\n", temp->Due_Date);
+            printf("Status: %s\n", temp->Status);
+            return;
+        }
+        temp = temp->next;
+    }
+    printf("Task ID %d not found\n", id);
+}
+
+int countTasks() {
+    struct Task* temp = head;
+    int count = 0;
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+struct Task* sortedtask(struct Task* sorted, struct Task* newNode) {
+    if (sorted == NULL || strcmp(sorted->Due_Date, newNode->Due_Date) >= 0) {
+        newNode->next = sorted;
+        sorted = newNode;
+    } else {
+        struct Task* current = sorted;
+        while (current->next != NULL && strcmp(current->next->Due_Date, newNode->Due_Date) < 0) {
+            current = current->next;
+        }
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+    return sorted;
+}
+
+void sortTasks() {
+    struct Task* sorted = NULL;
+    struct Task* current = head;
+    while (current != NULL) {
+        struct Task* next = current->next;
+        sorted = sortedtask(sorted, current);
+        current = next;
+    }
+    head = sorted;
+    printf("Tasks sorted by due date successfully!\n");
+}
+
+int main() {
+    int select, id, count;
+    char description[100], due_date[20], status[20];
+    char buffer[256];
+
+    while (1) {
+        printf("\nTask Management System\n***********************\n\n");
+        printf("1. Add Task\n");
+        printf("2. Delete Task\n");
+        printf("3. Update Task\n");
+        printf("4. Display All Tasks\n");
+        printf("5. Search Task by Task ID\n");
+        printf("6. Count Total Tasks\n");
+        printf("7. Sort Tasks by Due Date\n");
+        printf("8. Exit\n");
+        printf("\nEnter your selection: ");
+        scanf("%d", &select);
+        getchar();
+
+        if (select == 1) {
+            printf("Enter Task ID: ");
+            scanf("%d", &id);
+            getchar();
+            printf("Enter Description: ");
+            fgets(description, sizeof(description), stdin);
+            description[strcspn(description, "\n")] = '\0';
+            printf("Enter Due Date: ");
+            fgets(due_date, sizeof(due_date), stdin);
+            due_date[strcspn(due_date, "\n")] = '\0';
+            printf("Enter Status (Pending, In Progress, Completed): ");
+            fgets(status, sizeof(status), stdin);
+            status[strcspn(status, "\n")] = '\0';
+            addTask(id, description, due_date, status);
+        }
+        else if (select == 2) {
+            printf("Enter Task ID to delete: ");
+            scanf("%d", &id);
+            deleteTask(id);
+        }
+        else if (select == 3) {
+            printf("Enter Task ID to update: ");
+            scanf("%d", &id);
+            getchar();
+            printf("Enter new Description: ");
+            fgets(description, sizeof(description), stdin);
+            description[strcspn(description, "\n")] = '\0';
+            printf("Enter new Due Date: ");
+            fgets(due_date, sizeof(due_date), stdin);
+            due_date[strcspn(due_date, "\n")] = '\0';
+            printf("Enter new Status: ");
+            fgets(status, sizeof(status), stdin);
+            status[strcspn(status, "\n")] = '\0';
+            updateTask(id, description, due_date, status);
+        }
+        else if (select == 4) {
+            showTasks();
+        }
+        else if (select == 5) {
+            printf("Enter Task ID to search: ");
+            scanf("%d", &id);
+            searchTask(id);
+        }
+        else if (select == 6) {
+            count = countTasks();
+            printf("Total Tasks: %d\n", count);
+        }
+        else if (select == 7) {
+            sortTasks();
+        }
+        else if (select == 8) {
+            printf("Exiting Task Management System\n");
+            break;
+        }
+        else {
+            printf("Invalid selection\n");
+        }
+    }
+    return 0;
+}
