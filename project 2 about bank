@@ -1,0 +1,144 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LOCKERS 100
+#define PIN_LENGTH 5
+
+typedef struct {
+    int lockerID;
+    char customerName[50];
+    char pin[PIN_LENGTH];
+    int itemCount;
+} Locker;
+
+Locker lockers[MAX_LOCKERS];
+int lockerCount = 0;
+
+void registerLocker() {
+    if (lockerCount >= MAX_LOCKERS) {
+        printf("Locker registration limit reached.\n");
+        return;
+    }
+    Locker newLocker;
+    newLocker.lockerID = lockerCount + 1;
+    printf("Enter customer name: ");
+    scanf("%s", newLocker.customerName);
+    printf("Set a 4-digit PIN: ");
+    scanf("%s", newLocker.pin);
+    newLocker.itemCount = 0;
+    lockers[lockerCount] = newLocker;
+    lockerCount++;
+    printf("Locker registered successfully. Your Locker ID is: %d\n", newLocker.lockerID);
+}
+
+int accessLocker(int lockerID) {
+    for (int i = 0; i < lockerCount; i++) {
+        if (lockers[i].lockerID == lockerID) {
+            for (int attempts = 0; attempts < 3; attempts++) {
+                char inputPin[PIN_LENGTH];
+                printf("Enter your PIN: ");
+                scanf("%s", inputPin);
+                if (strcmp(lockers[i].pin, inputPin) == 0) {
+                    return i;
+                }
+                printf("Incorrect PIN. Try again.\n");
+            }
+            printf("Too many incorrect attempts. Locker is temporarily locked.\n");
+            return -1;
+        }
+    }
+    printf("Locker ID not found.\n");
+    return -1;
+}
+
+void storeItems(int lockerIndex) {
+    int itemsToStore;
+    printf("How many items do you want to store? ");
+    scanf("%d", &itemsToStore);
+    lockers[lockerIndex].itemCount += itemsToStore;
+    printf("Items stored successfully. Current item count: %d\n", lockers[lockerIndex].itemCount);
+}
+
+void retrieveItems(int lockerIndex) {
+    int itemsToRetrieve;
+    printf("How many items do you want to retrieve? ");
+    scanf("%d", &itemsToRetrieve);
+    if (itemsToRetrieve > lockers[lockerIndex].itemCount) {
+        printf("Cannot retrieve more items than stored.\n");
+    } else {
+        lockers[lockerIndex].itemCount -= itemsToRetrieve;
+        printf("Items retrieved successfully. Current item count: %d\n", lockers[lockerIndex].itemCount);
+    }
+}
+
+void viewLockerDetails() {
+    int lockerID;
+    printf("Enter Locker ID: ");
+    scanf("%d", &lockerID);
+    for (int i = 0; i < lockerCount; i++) {
+        if (lockers[i].lockerID == lockerID) {
+            printf("Locker ID: %d\n", lockers[i].lockerID);
+            printf("Customer Name: %s\n", lockers[i].customerName);
+            printf("Item Count: %d\n", lockers[i].itemCount);
+            return;
+        }
+    }
+    printf("Locker ID not found.\n");
+}
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\nMenu:\n");
+        printf("1. Register a new locker\n");
+        printf("2. Access a locker\n");
+        printf("3. Store items in a locker\n");
+        printf("4. Retrieve items from a locker\n");
+        printf("5. View locker details\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        
+        switch (choice) {
+            case 1:
+                registerLocker();
+                break;
+            case 2: {
+                int lockerID;
+                printf("Enter Locker ID: ");
+                scanf("%d", &lockerID);
+                accessLocker(lockerID);
+                break;
+            }
+            case 3: {
+                int lockerID;
+                printf("Enter Locker ID: ");
+                scanf("%d", &lockerID);
+                int lockerIndex = accessLocker(lockerID);
+                if (lockerIndex != -1) {
+                    storeItems(lockerIndex);
+                }
+                break;
+            }
+            case 4: {
+                int lockerID;
+                printf("Enter Locker ID: ");
+                scanf("%d", &lockerID);
+                int lockerIndex = accessLocker(lockerID);
+                if (lockerIndex != -1) {
+                    retrieveItems(lockerIndex);
+                }
+                break;
+            }
+            case 5:
+                viewLockerDetails();
+                break;
+            case 6:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+    return 0;
+}
