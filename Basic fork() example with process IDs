@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include<sys/types.h>
+#include<unistd.h>
+
+int main() {
+    
+    printf("This is line 1\n\n");
+    
+    int id;
+    id= fork();
+
+    printf("This is line 2.for return id = %d. pid = %d. parentID = %d\n",id,getpid(), getppid());
+
+    return 0;
+}
