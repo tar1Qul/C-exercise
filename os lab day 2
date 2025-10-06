@@ -1,36 +1,52 @@
+//p1
+
 #include <stdio.h>
 
+struct process {
+    int pid, at, bt, wt, tat, ct;
+};
+
 int main() {
-    
-   struct proccess {
-        int pid, at, bt, wt, tat;
-   };
-    int n;
-    int i;
-    
-    printf("Please enter the program numner: ");
-     scanf("%d",&n);
-     
-   struct proccess p[n];
-   
-   for(i=0; i<n; i++){
-       p[i].pid=1+i;
-    printf("\nPlease enter the arival time for program numner %d: ",p[i].pid);
-     scanf("%d",&p[i].at);
-     
-    printf("Please enter the brust time for program numner %d: ",p[i].pid);
-     scanf("%d",&p[i].bt);
-   }
-     
-    int time = 0;
-    float total_time = 0;
-    float total_wt = 0;
-     
-    for(i=0; i<n; i++){
-        if(p[i]).at= time{
-            
-        }
+    int n, i;
+    float total_tat = 0, total_wt = 0;
+
+    printf("Please enter the number of processes: ");
+    scanf("%d", &n);
+
+    struct process p[n];
+
+    for (i = 0; i < n; i++) {
+        p[i].pid = i + 1;
+        printf("\nPlease enter the arrival time for process %d: ", p[i].pid);
+        scanf("%d", &p[i].at);
+
+        printf("Please enter the burst time for process %d: ", p[i].pid);
+        scanf("%d", &p[i].bt);
     }
+
+    int time = 0;
+    for (i = 0; i < n; i++) {
+        if (time < p[i].at) {
+            time = p[i].at;  
+        }
+        time += p[i].bt;
+        p[i].ct = time;
+        p[i].tat = p[i].ct - p[i].at;
+        p[i].wt = p[i].tat - p[i].bt;
+
+        total_tat += p[i].tat;
+        total_wt += p[i].wt;
+    }
+
+    
+    printf("\nProcess\tAT\tBT\tTAT\tWT\n");
+    for (i = 0; i < n; i++) {
+        printf("P%d\t%d\t%d\t%d\t%d\t%d\n", 
+               p[i].pid, p[i].at, p[i].bt, p[i].tat, p[i].wt);
+    }
+
+    printf("\nAverage Turnaround Time = %.2f", total_tat / n);
+    printf("\nAverage Waiting Time = %.2f\n", total_wt / n);
 
     return 0;
 }
